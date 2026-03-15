@@ -12,7 +12,6 @@ class BFSGraph:
             self.graph[loc_id] = location.get('neighbors', [])
     
     def bfs_search(self, start_node, target_keyword=None):
-
         if start_node not in self.graph:
             return {'found': False, 'results': [], 'visited_nodes': [], 'execution_time': 0}
         
@@ -25,7 +24,6 @@ class BFSGraph:
             current_node, path, depth = queue.popleft()
 
             if current_node not in visited:
-
                 visited.add(current_node)
 
                 location = self.locations.get(current_node, {})
@@ -38,18 +36,15 @@ class BFSGraph:
                     keyword = target_keyword.lower()
 
                     for key, value in location.items():
-
                         if isinstance(value, str):
                             if keyword in value.lower():
                                 keyword_match = True
                                 break
-
                         elif isinstance(value, list):
                             for item in value:
                                 if isinstance(item, str) and keyword in item.lower():
                                     keyword_match = True
                                     break
-
                             if keyword_match:
                                 break
 
